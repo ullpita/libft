@@ -6,47 +6,49 @@
 /*   By: upierre- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 18:56:04 by upierre-          #+#    #+#             */
-/*   Updated: 2016/01/14 15:42:45 by upierre-         ###   ########.fr       */
+/*   Updated: 2016/01/18 12:51:41 by upierre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	size_str(int n)
+static int		ft_size(int n)
 {
-	int		i;
+	int			i;
 
 	i = 0;
 	if (n < 0)
 		i++;
-	while (n != 0)
+	while (n)
 	{
-		i++;
 		n /= 10;
+		i++;
 	}
 	return (i);
 }
 
-char		*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
-	int		i;
-	char	*res;
+	char		*mem;
+	int			i;
 
+	if (n == 0)
+		return (ft_strdup("0"));
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	i = size_str(n);
-	res = ft_strnew(i);
-	if (!res)
+	i = ft_size(n);
+	if (!(mem = ft_strnew(i)))
 		return (NULL);
-	if (n == 0)
-		return ("0");
 	if (n < 0)
-		res[0] = '-';
+	{
+		mem[0] = '-';
+		n = -(n);
+	}
 	while (n != 0)
 	{
-		res[i - 1] = ft_fabs(n % 10) + '0';
-		i--;
+		mem[i - 1] = (n % 10) + '0';
 		n /= 10;
+		i--;
 	}
-	return (res);
+	return (mem);
 }

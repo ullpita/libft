@@ -6,7 +6,7 @@
 #    By: upierre- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/02 18:50:51 by upierre-          #+#    #+#              #
-#    Updated: 2016/01/11 16:57:15 by upierre-         ###   ########.fr        #
+#    Updated: 2016/01/18 12:19:02 by upierre-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,6 @@ SRCS = ft_memset.c \
 	   ft_strlenc.c \
 	   ft_fabs.c \
 	   ft_islower.c \
-	   ft_floor.c \
 	   ft_lstnew.c \
 	   ft_lstdelone.c \
 	   ft_lstdel.c \

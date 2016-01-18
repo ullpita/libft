@@ -6,7 +6,7 @@
 /*   By: upierre- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 12:31:08 by upierre-          #+#    #+#             */
-/*   Updated: 2016/01/14 15:27:17 by upierre-         ###   ########.fr       */
+/*   Updated: 2016/01/18 12:18:39 by upierre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,5 @@ int					ft_strbless(char const *s);
 size_t				ft_strlenc(const char *s, char c);
 int					ft_fabs(int n);
 int					ft_islower(int c);
-int					ft_floor(double x);
 
 #endif
