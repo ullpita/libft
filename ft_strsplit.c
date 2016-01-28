@@ -6,7 +6,7 @@
 /*   By: upierre- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 12:11:25 by upierre-          #+#    #+#             */
-/*   Updated: 2016/01/18 12:50:23 by upierre-         ###   ########.fr       */
+/*   Updated: 2016/01/22 18:26:44 by upierre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ static char			*ft_word(size_t size, char const *s)
 {
 	char			*res;
 
-	res = ft_strnew(size);
+	if (!(res = ft_strnew(size)))
+		return (0);
 	res = ft_strncpy(res, s, size);
 	return (res);
 }

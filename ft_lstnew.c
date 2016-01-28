@@ -6,7 +6,7 @@
 /*   By: upierre- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 18:42:11 by upierre-          #+#    #+#             */
-/*   Updated: 2016/01/08 13:54:12 by upierre-         ###   ########.fr       */
+/*   Updated: 2016/01/28 15:59:08 by upierre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_list		*ft_lstnew(void const *content, size_t content_size)
 	}
 	else
 	{
-		if (!(listnew->content = (t_list*)malloc(sizeof(content_size))))
+		if (!(listnew->content = (t_list*)malloc(content_size)))
 			return (NULL);
 		ft_memmove(listnew->content, content, content_size);
 		listnew->content_size = content_size;
