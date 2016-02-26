@@ -6,69 +6,67 @@
 /*   By: upierre- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 12:11:25 by upierre-          #+#    #+#             */
-/*   Updated: 2016/01/22 18:26:44 by upierre-         ###   ########.fr       */
+/*   Updated: 2016/01/28 18:15:07 by upierre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t		ft_countword(char const *s, char c)
+static int		ft_count(char const *s, char c)
 {
-	size_t			count;
-	size_t			i;
+	int		count;
+	int		sec;
 
-	i = 0;
 	count = 0;
-	while (s[i])
+	sec = 0;
+	while (*s)
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i] != c && s[i])
+		if (sec == 0 && *s != c)
 		{
-			i++;
+			sec = 1;
 			count++;
-			while (s[i] != c && s[i])
-				i++;
 		}
+		else if (sec == 1 && *s == c)
+			sec = 0;
+		s++;
 	}
 	return (count);
 }
 
-static char			*ft_word(size_t size, char const *s)
+static size_t	ft_len(char const *s, char c)
 {
-	char			*res;
+	size_t	len;
 
-	if (!(res = ft_strnew(size)))
+	if (!s)
 		return (0);
-	res = ft_strncpy(res, s, size);
-	return (res);
+	len = 0;
+	while (*s && *s != c)
+	{
+		len++;
+		s++;
+	}
+	return (len);
 }
 
-char				**ft_strsplit(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
-	size_t			count;
-	size_t			i;
-	char			**res;
+	char	**tab;
+	int		j;
+	int		nbc;
 
-	if (!(res = (char **)malloc(sizeof(char *) * (ft_countword(s, c) + 1))))
+	j = 0;
+	nbc = ft_count((char const *)s, c);
+	if (!(tab = (char **)malloc(sizeof(*tab) * (nbc + 1))))
 		return (NULL);
-	res[0] = 0;
-	if (ft_countword(s, c) == 0)
-		return (res);
-	i = 0;
-	while (i <= ft_countword(s, c))
+	tab[nbc] = NULL;
+	while (nbc--)
 	{
-		while (*s == c)
+		while (*s == c && *s)
 			s++;
-		count = 0;
-		if (*s != c)
-		{
-			count = ft_strlenc(s, c);
-			res[i] = ft_word(count, s);
-			s += count;
-		}
-		i++;
+		if (!(tab[j] = ft_strsub(s, 0, ft_len(s, c))))
+			return (NULL);
+		s = s + ft_len(s, c);
+		j++;
 	}
-	res[i] = 0;
-	return (res);
+	return (tab);
 }
